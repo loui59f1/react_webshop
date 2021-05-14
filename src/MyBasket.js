@@ -9,11 +9,13 @@ export default function MyBasket({ basket }) {
       { name: "Socks", amount: 2, id: 6 },
     ];
    */
+
     return (
 
         <section className="MyBasket">
 
-            <p>You have {basket.length} item{basket.length === 1 ? "s" : ""} in your basket, totalling 0 DKK</p>
+
+            <p>You have <TestCalc basket={basket} /> item{basket.length === 1 ? "s" : ""} in your basket, totalling 0 DKK</p>
 
             <ul>
                 {basket.map((item) => (
@@ -25,6 +27,27 @@ export default function MyBasket({ basket }) {
             </ul>
 
         </section>
+    );
+}
+
+function TestCalc({ basket }) {
+
+
+    return (
+        <p>
+            {basket.map((item) => (
+                <TestItem
+                    amount={item.amount} />
+            ))}
+        </p>
+    )
+}
+
+function TestItem(props) {
+    return (
+        <p>
+            {props.amount}
+        </p>
     );
 }
 
