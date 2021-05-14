@@ -3,9 +3,9 @@ export default function Nav() {
         <nav>
             <p>React webshop</p>
             <div className="logo">
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar3"></div>
+                <div className="bar1"></div>
+                <div className="bar2"></div>
+                <div className="bar3"></div>
             </div>
         </nav>
     );

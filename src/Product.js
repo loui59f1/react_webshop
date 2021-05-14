@@ -1,30 +1,27 @@
-import { useState } from "react";
+import AddRemoveBtns from "./AddRemoveBtns";
 
 export default function Product(props) {
-    // Her bruger vi en state variable og en updater function - 0'et er vores inital value/amount
-    const [amount, setAmount] = useState(0);
 
-    // Updater functions
-    function handleClickUp(evt) {
-        setAmount((prevState) => {
-            return prevState + 1;
-        });
-    }
-    function handleClickDown(evt) {
-        setAmount((prevState) => {
-            return prevState - 1;
-        });
-    }
+    //console.log(props);
 
+    // TODO: Send basket hertil fra App? 
+    // TODO: Spørg om props.id er i basket, hvis ja, skriv props.amount - hvis ikke, skriv 0???
+
+
+    // Other stuff
     return (
-        <article className="Product">
+
+        <article className={props.soldout ? "Product soldout" : "Product"}>
+
             <h2>{props.productdisplayname}</h2>
-            <p>{props.price}</p>
-            <div className="product_btn">
-                <button disabled={amount === 0} onClick={handleClickDown}>{" "} -{" "}</button>
-                {amount}
-                <button onClick={handleClickUp}> + </button>
-            </div>
+
+            <h3>{props.price} DKK</h3>
+
+            <AddRemoveBtns />
+
+            <button onClick={() => props.addToBasket(props)}>Add to basket</button>
+
         </article>
+
     );
 }

@@ -9,12 +9,21 @@ body {
   font-family: 'Jost', sans-serif;
 }
 
-main {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 3em;
+.App {
   max-width: 1300px;
   margin: 0 auto;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 3.5fr 1fr;
+  gap: 3em;
+}
+
+.ProductList {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 3em;
 }
 
 nav {
@@ -50,7 +59,7 @@ button:hover {
 .Basket {
   background-color: #fff;
   box-shadow: 0px 0px 30px -14px rgba(199, 199, 199, 0.6);
-  height: 30vh;
+  height: auto;
 }
 
 .MyBasket {
@@ -58,13 +67,8 @@ button:hover {
 }
 
 .CheckoutForm {
+  position: relative;
   padding: 25px;
-}
-
-.Productlist {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 3em;
 }
 
 .Product {
@@ -81,11 +85,11 @@ button:hover {
   letter-spacing: 0.5px;
 }
 
-.Product p {
+/* .Product p {
   position: absolute;
   bottom: 25px;
   right: 25px;
-}
+} */
 
 .Product .product_btn {
   position: absolute;
@@ -119,4 +123,62 @@ button:hover {
   background-color: #333;
   margin: 3px 0;
   transition: 0.4s;
+}
+
+/* Forms */
+
+.form_group {
+  display: grid;
+  gap: 3px;
+  grid-row: span 3;
+  position: relative;
+}
+
+input {
+  color: #2e326b;
+  border: 1px solid #cacefc;
+  background: #fff;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: repeat;
+  background-image: none;
+  background-size: auto;
+  padding: 15px 10px;
+      padding-left: 10px;
+  padding-inline: 12px;
+  padding-left: 15px;
+  border-radius: 7px;
+  outline: 0;
+  resize: none;
+  transition: .1s background;
+  font-family: Jost,sans-serif;
+  letter-spacing: .5px;
+  margin-bottom: 25px !important;
+}
+
+label {
+  color: #2e326b;
+  font-family: Jost,sans-serif;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1.3px;
+  margin-bottom: -60px;
+  margin-left: 12px;
+  padding: 2px 4px;
+  height: 20px;
+  width: auto !important;
+  background-color: #fff;
+  z-index: 100;
+  position: absolute;
+  top: -10px;
+}
+
+.expiration {
+  border: 1px solid #cacefc;
+  height: 51px !important;
+  border-radius: 7px;
+  width: 60%;
+}
+.expiration input {
+  border: 0;
 }

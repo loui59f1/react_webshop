@@ -3,9 +3,13 @@ import CheckoutForm from "./CheckoutForm";
 
 export default function Basket(props) {
     return (
-        <aside className="Basket">
+
+        <div className="Basket">
+
             <MyBasket basket={props.basket} />
-            <CheckoutForm />
-        </aside>
+
+            {props.basket.length > 0 ? <CheckoutForm /> : <p>But more stuff</p>}
+
+        </div>
     );
 }

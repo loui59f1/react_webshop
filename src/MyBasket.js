@@ -1,40 +1,38 @@
-import { useState } from "react";
+import AddRemoveBtns from "./AddRemoveBtns";
 
 export default function MyBasket({ basket }) {
-    const [cart, setCart] = useState([
-        { name: "Shirt", amount: 1 },
-        { name: "Pants", amount: 3 },
-        { name: "Socks", amount: 2 },
-    ]);
 
-    function addToCart() {
-        setCart((nextCart) => [
-            ...nextCart,
-            {
-                name: "Shoes",
-                amount: 14,
-            },
-        ]);
-    }
-
-
+    /* 
+    const cart = [
+      { name: "Shirt", amount: 1, id: 4 },
+      { name: "Pants", amount: 3, id: 5 },
+      { name: "Socks", amount: 2, id: 6 },
+    ];
+   */
     return (
+
         <section className="MyBasket">
-            <p>You have {basket.length} item{basket.length !== 1 ? "s" : ""} in your basket, totalling 0 DKK</p>
-            <button onClick={addToCart}>Buy More</button>
+
+            <p>You have {basket.length} item{basket.length === 1 ? "s" : ""} in your basket, totalling 0 DKK</p>
+
             <ul>
-                {cart.map((item) => (
-                    <CartItem name={item.name} amount={item.amount} key={item.name} />
+                {basket.map((item) => (
+                    <BasketItem
+                        name={item.productdisplayname}
+                        amount={item.amount}
+                        key={item.id} />
                 ))}
             </ul>
+
         </section>
     );
 }
 
-function CartItem(props) {
+function BasketItem(props) {
     return (
         <li>
-            {props.amount} {props.name}
+            {props.name}
+            <AddRemoveBtns amount={props.amount} />
         </li>
     );
 }
