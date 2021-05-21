@@ -1,27 +1,40 @@
-import AddRemoveBtns from "./AddRemoveBtns";
+import {useState} from "react";
 
-export default function Product(props) {
+function Product({product,addToBasket}) {
+  const styles = {
+    border: "1px solid #000",
+    backgroundColor: product.soldOut ? "red" : "yellow",
+  };
 
-    //console.log(props);
+  const [amount, setAmount] = useState(0);
 
-    // TODO: Send basket hertil fra App? 
-    // TODO: Spørg om props.id er i basket, hvis ja, skriv props.amount - hvis ikke, skriv 0???
+  function decreaseAmount() {
+    setAmount((prev) => prev>0?prev-1:prev);
+  }
 
+  function increaseAmount() {
+    setAmount((prev) => prev +1);
+  }
 
-    // Other stuff
-    return (
+  function enterAmount(event) {
+    console.log(`Entered amount ${event.target.value}`);
+    setAmount((prev) => (Number)(event.target.value));
+  }
 
-        <article className={props.soldout ? "Product soldout" : "Product"}>
-
-            <h2>{props.productdisplayname}</h2>
-
-            <h3>{props.price} DKK</h3>
-
-            <AddRemoveBtns />
-
-            <button onClick={() => props.addToBasket(props)}>Add to basket</button>
-
-        </article>
-
-    );
+  return (
+    <div className="Product" style={styles}>
+      <h1>{product.productdisplayname?product.productdisplayname:product.title}</h1>
+      <p>Category: {product.category}</p>
+      <h2>{product.price?`only ${product.price},- kr`:""}</h2>
+      <p>product details</p>
+      <button onClick={() => addToBasket(product)}>Add to basket</button>
+      <div className="counter">
+        <button onClick={decreaseAmount}>-</button>
+        <input type="text" onChange={enterAmount} value={amount}/>
+        <button onClick={increaseAmount}>+</button>
+      </div>
+    </div>
+  )
 }
+
+export default Product;

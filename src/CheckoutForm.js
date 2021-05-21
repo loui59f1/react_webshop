@@ -1,55 +1,58 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-export default function CheckoutForm() {
-    const [name, setName] = useState("");
-    const [card, setCard] = useState("");
-    const [month, setMonth] = useState("");
-    const [year, setYear] = useState("");
+function CheckoutForm() {
+  const [payerName, setPayerName] = useState("");
+  const [creditCardNo, setCreditCardNo] = useState("");
+  const [creditCardMonth, setCreditCardMonth] = useState("");
+  const [creditCardYear, setCreditCardYear] = useState("");
 
-    const nameChanged = (e) => {
-        setName(e.target.value);
-    };
+  const payerNameChanged = (e) => {
+    setPayerName(e.target.value);
+  }
 
-    const cardChanged = (e) => {
-        setCard(e.target.value);
-    };
+  const creditCardNoChanged = (e) => {
+    setCreditCardNo(e.target.value);
+  }
 
-    const monthChanged = (e) => {
-        setMonth(e.target.value);
-    };
+  const creditCardMonthChanged = (e) => {
+    setCreditCardMonth(e.target.value);
+  }
 
-    const yearChanged = (e) => {
-        setYear(e.target.value);
-    };
+  const creditCardYearChanged = (e) => {
+    setCreditCardYear(e.target.value);
+  }
 
-    const onSubmit = (e) => {
-        e.preventDefault();
-        // postStuff({
-        //     name: name,
-        //     email: email,
-        // });
-    };
-    return (
-        <section className="CheckoutForm">
-            <form onSubmit={onSubmit}>
-                <div className="form_group">
-                    <label htmlFor="name">Name</label>
-                    <input type="text" onChange={nameChanged} name="name" value={name} />
-                </div>
-                <div className="form_group">
-                    <label htmlFor="card">Creditcard</label>
-                    <input type="tel" onChange={cardChanged} name="card" value={card} maxLength="19" minLength="19" placeholder="xxxx xxxx xxxx xxxx" pattern="[0-9\s]{13,19}" />
-                </div>
-                <div className="form_group">
-                    <span className="expiration">
-                        <label htmlFor="expiration">Expiration</label>
-                        <input type="text" onChange={monthChanged} name="expiration" value={month} placeholder="MM" maxLength="2" size="2" />
-                        <span>/</span>
-                        <input type="text" onChange={yearChanged} name="expiration" value={year} placeholder="YY" maxLength="2" size="2" />
-                    </span>
-                </div>
-                <input type="submit" value="Send" />
-            </form>
-        </section>
-    );
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log("Submitting payment");
+  }
+
+  return (
+    <form onSubmit={onSubmit}>
+      <label>Name
+        <input type="text" onChange={payerNameChanged} name="payerName" value={payerName}></input>  
+      </label>
+
+      <label>Credit Card
+        <input type="text" minLength="16" onChange={creditCardNoChanged} name="creditCardNo" value={creditCardNo}></input>  
+      </label>
+
+      <label>Month
+        <input type="number" min="1" max="12" onChange={creditCardMonthChanged} name="creditCardMonth" value={creditCardMonth}></input>  
+        
+      </label>
+
+      <label>Year
+        <input type="number" onChange={creditCardYearChanged} name="creditCardYear" value={creditCardYear}></input>  
+      </label>
+
+      <input type="submit" value="Make Payment"></input>
+
+
+      
+
+    </form>
+  )
 }
+
+export default CheckoutForm;

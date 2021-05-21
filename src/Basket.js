@@ -1,15 +1,13 @@
-import MyBasket from "./MyBasket";
-import CheckoutForm from "./CheckoutForm";
+import CheckoutForm from './CheckoutForm.js';
+import MyBasket from './MyBasket.js';
 
-export default function Basket(props) {
-    return (
-
-        <div className="Basket">
-
-            <MyBasket basket={props.basket} />
-
-            {props.basket.length > 0 ? <CheckoutForm /> : <p>But more stuff</p>}
-
-        </div>
-    );
+function Basket(props) {
+  return (
+    <div className="Basket">
+      <MyBasket {...props}></MyBasket>
+      {props.basket.length > 0 && <CheckoutForm></CheckoutForm>}
+    </div>
+  )
 }
+
+export default Basket;

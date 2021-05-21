@@ -1,10 +1,13 @@
-import Product from "./Product";
-export default function ProductList(props) {
-    return (
-        <section className="ProductList">
-            {props.info.map((item) => (
-                <Product addToBasket={props.addToBasket} {...item} key={item.id} />
-            ))}
-        </section>
-    );
+import Product from './Product.js';
+
+function ProductList({products,addToBasket}) {
+  const productlist = products.map( product => <Product product={product} key={product.id} addToBasket={addToBasket}></Product> );
+
+  return (
+    <div className="ProductList">
+        {productlist}
+    </div>
+  )
 }
+
+export default ProductList;
